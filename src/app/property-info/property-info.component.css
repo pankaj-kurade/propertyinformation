@@ -1,0 +1,106 @@
+
+.active {
+  background-color: #4CAF50;
+}
+
+.headerbar {
+  text-align: center;
+  height: 50px;
+  background: linear-gradient(130deg, #848f7230, hwb(186 50% 16%));
+  width: 100%;
+  border-radius: 20px;
+}
+
+.headerbar h1 {
+  text-align: center;
+  font-size: 50px;
+}
+
+
+
+.nav2 ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  background-color: #5b5a5a;
+  overflow: hidden;
+  display: flex;
+}
+
+.nav2 li {
+  float: left;
+}
+
+.nav2 li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.main-container {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.header{
+  display:flex;
+  justify-content:space-between;
+}
+
+.orderinfo{
+
+  display: flex;
+  justify-content: end;
+}
+form {
+  width: 400px;
+  background: linear-gradient(130deg, #848f7230, hwb(186 50% 16%));
+
+  margin-left: 20px; /* Adjust this value to your preference */
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"] {
+  width: 100%;
+  padding: 8px;
+  margin-bottom: 10px;
+  border: 1px solid #ccc;
+  border-radius: 3px;
+}
+
+button {
+  display: block;
+  width: 100%;
+  padding: 10px;
+  background: linear-gradient(130deg, #848f7230, #4d8085);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+button:hover {
+  background: linear-gradient(130deg,#4d8085, #848f7230);
+}
+
+.error {
+  color: red;
+}

@@ -1,0 +1,61 @@
+<nav class="headerbar">
+  <h1>Properties details</h1>
+</nav>
+
+<div class="" style="text-align: center">
+  <nav class="nav2">
+    <ul>
+      <li><a href="#">Property Details</a></li>
+      <li class="active"><a href="#">Property Info1</a></li>
+      <li class="hide-600"><a href="#">Checkout</a></li>
+    </ul>
+  </nav>
+</div>
+
+<div class="main-container">
+  <div class="container">
+    <div class="header">
+
+      <h2>property informationn</h2>
+      <h2>information</h2>
+    </div>
+    <div class="propertyinfo">
+      <hr>
+<h4>country: </h4>
+       <h4>       parcel:
+      </h4>
+      <h4>ownwer Name</h4>
+      <h4>Addition info</h4>
+    </div>
+    <div class="orderinfo">
+<hr>
+      <h4>two owner search</h4>
+
+    </div>
+
+
+  </div>
+Contact Infoormation
+<hr>
+<form (ngSubmit)="submitForm()" #form="ngForm">
+  <div>
+    <label for="fullName">Full Name:</label>
+    <input type="text" id="fullName" name="fullName" ngModel required>
+  </div>
+  <div>
+    <label for="lastName">Last Name:</label>
+    <input type="text" id="lastName" name="lastName" ngModel required>
+  </div>
+  <div>
+    <label for="phone">Phone:</label>
+    <input type="tel" id="phone" name="phone" ngModel required>
+  </div>
+  <div>
+    <label for="email">Email:</label>
+    <input type="email" id="email" name="email" ngModel required>
+  </div>
+  <button type="submit" [disabled]="!form.valid">Submit</button>
+</form>
+
+
+</div>

@@ -1,9 +1,17 @@
-<div>
+<nav class="headerbar">
+  <h1>Properties details</h1>
+</nav>
 
-
-
-
-  <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+<div class="" style="text-align: center">
+  <nav class="nav2">
+    <ul>
+      <li><a href="#" class="active">Property Details</a></li>
+      <li class="hide-800"><a href="#">Property Info</a></li>
+      <li class="hide-600"><a href="#">Checkout</a></li>
+    </ul>
+  </nav>
+</div>
+<form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
   <div class="form-section">
     <div formGroupName="propertyAddress" class="column">
       <h2>Property Address</h2>
@@ -50,7 +58,7 @@
     </div>
   </div>
 
-  <div class="form-section">
+  <div class="form-section"  style="width: 30%;">
     <label>
       Country:
       <select formControlName="country">
@@ -83,10 +91,8 @@
 
   <div class="form-section">
     <h2>Total Cost: ${{ totalCost }}</h2>
+
+
+  <button class="btn btn-primary" type="submit">continue >></button>
   </div>
-
-  <button type="submit">Submit</button>
 </form>
-
-
-</div>

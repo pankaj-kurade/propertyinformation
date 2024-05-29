@@ -1,21 +1,35 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-prop',
   templateUrl: './prop.component.html',
   styleUrl: './prop.component.css'
 })
-export class PropComponent {
+export class PropComponent implements OnInit  {
+propertyInformationForm:any;
 continue() {
-throw new Error('Method not implemented.');
-}
-onChange($event: Event) {
-throw new Error('Method not implemented.');
-}
-// propertyAddressForm: FormGroup<any>;
-onSubmit() {
-throw new Error('Method not implemented.');
-}
+    // Trigger validation for property details form
+    this.validateForm(this.propertyDetailsForm);
+
+    // Trigger validation for property information form
+    this.validateForm(this.propertyInformationForm);
+
+    // Check if both forms are valid before continuing
+    if (this.propertyDetailsForm.valid && this.propertyInformationForm.valid) {
+      // Proceed with your logic here, e.g., navigating to the next step
+      console.log('Both forms are valid. Proceeding...');
+    } else {
+      console.log('One or more forms are invalid. Cannot proceed.');
+    }
+  }
+  validateForm(formGroup: FormGroup) {
+    Object.values(formGroup.controls).forEach(control => {
+      control.markAsTouched();
+      control.updateValueAndValidity();
+    });
+  }
+
 selectedOption: string = '';
   selectedCountryServices: any = {};
 
@@ -72,6 +86,27 @@ countries = [
       documentRetrieval: 35
     }
   }]
+
+  propertyDetailsForm: any;
+
+  constructor(private formBuilder: FormBuilder) {}
+
+  ngOnInit() {
+    this.propertyDetailsForm = this.formBuilder.group({
+      address: ['', Validators.required],
+      street: ['', Validators.required],
+      country: ['', Validators.required],
+      state: ['', Validators.required],
+      zip: ['', Validators.required],
+    });
+
+    this.propertyInformationForm = this.formBuilder.group({
+      country: ['', Validators.required],
+      parcel: ['', Validators.required],
+      ownerName: ['', Validators.required],
+      additionInfo: [''],
+    });
+  }
 
 
 

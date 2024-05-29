@@ -17,12 +17,14 @@ import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 
 import { FormsModule } from '@angular/forms';
+import { PropertyInfoComponent } from './property-info/property-info.component';
 @NgModule({
   declarations: [
     AppComponent,
     PropertyFormComponent,
     PropComponent,
-    SideOptionComponent
+    SideOptionComponent,
+    PropertyInfoComponent
   ],
   imports: [
     BrowserModule,MatIconModule,FormsModule,
