@@ -1,0 +1,92 @@
+<div>
+
+
+
+
+  <form [formGroup]="propertyForm" (ngSubmit)="onSubmit()">
+  <div class="form-section">
+    <div formGroupName="propertyAddress" class="column">
+      <h2>Property Address</h2>
+      <label>
+        Address:
+        <input formControlName="address">
+      </label>
+      <label>
+        Street:
+        <input formControlName="street">
+      </label>
+      <label>
+        City:
+        <input formControlName="city">
+      </label>
+      <label>
+        State:
+        <input formControlName="state">
+      </label>
+      <label>
+        Zip Code:
+        <input formControlName="zipCode">
+      </label>
+    </div>
+
+    <div formGroupName="additionalInformation" class="column">
+      <h2>Additional Information</h2>
+      <label>
+        City:
+        <input formControlName="city">
+      </label>
+      <label>
+        Parcel:
+        <input formControlName="parcel">
+      </label>
+      <label>
+        Owner Name:
+        <input formControlName="ownerName">
+      </label>
+      <label>
+        Additional Info:
+        <textarea formControlName="additionalInfo"></textarea>
+      </label>
+    </div>
+  </div>
+
+  <div class="form-section">
+    <label>
+      Country:
+      <select formControlName="country">
+        <option *ngFor="let country of countries" [value]="country.name">
+          {{ country.name }}
+        </option>
+      </select>
+    </label>
+  </div>
+
+  <div formGroupName="services" class="form-section">
+    <h2>Services</h2>
+    <label>
+      <input type="checkbox" formControlName="currentOwner">
+      Current Owner: ${{ selectedCountryServices.currentOwner }}
+    </label>
+    <label>
+      <input type="checkbox" formControlName="twoOwnerSearch">
+      Two Owner Search: ${{ selectedCountryServices.twoOwnerSearch }}
+    </label>
+    <label>
+      <input type="checkbox" formControlName="fullSearch">
+      Full Search: ${{ selectedCountryServices.fullSearch }}
+    </label>
+    <label>
+      <input type="checkbox" formControlName="documentRetrieval">
+      Document Retrieval: ${{ selectedCountryServices.documentRetrieval }}
+    </label>
+  </div>
+
+  <div class="form-section">
+    <h2>Total Cost: ${{ totalCost }}</h2>
+  </div>
+
+  <button type="submit">Submit</button>
+</form>
+
+
+</div>

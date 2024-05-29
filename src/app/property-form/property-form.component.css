@@ -1,0 +1,30 @@
+.form-section {
+  margin-bottom: 20px;
+}
+
+.column {
+  display: inline-block;
+  vertical-align: top;
+  width: 45%;
+  margin-right: 5%;
+}
+
+label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+input, select, textarea {
+  width: 100%;
+  padding: 8px;
+  margin-top: 5px;
+}
+
+textarea {
+  min-height: 80px;
+}
+
+button {
+  margin-top: 20px;
+  padding: 10px 20px;
+}

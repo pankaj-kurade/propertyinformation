@@ -1,0 +1,56 @@
+.navbar{
+
+  position: fixed;
+    height: 50px;
+    z-index: 8888;
+    background:linear-gradient(130deg, #808080,#80ced6);
+    width: 100%;
+    border-radius: 20px;
+}
+.navbar h2{
+  line-height: 50px;
+  text-align: center;
+}
+.toggle-button-row mat-icon{
+    position: absolute;
+    top: 8px;
+    left: 15px;
+}
+
+.slide-out-pannel{
+  position: fixed;
+  top:50px;
+  left: 0;
+  bottom: 0;
+  width: 250px;
+  background-color: #808080;
+  transition: transform 0.5s ease;
+  z-index: 1000;
+  border-top-right-radius: 20px;
+  box-shadow:  0 0 10px rgb(33, 34, 33);
+}
+.slide-out-pannel.slide-out {
+/* transform: translateX(-100%); */
+transform: translateX(-100%);
+
+}
+.slide-out-content{
+  margin-top:50px ;
+  padding: 20px;
+}
+.edit-col{
+  text-align: center;
+  color: black;
+  cursor: pointer;
+  font-size: 18px;
+  padding: 10px;
+  border-radius: 10px;
+  background-color: white;
+  margin-bottom: 10px;
+
+}
+.edit-col:hover{
+  box-shadow: 0px 0px 10px rgb(0, 0, 0);
+  background-color: #d1f0f4e4;
+
+}

@@ -2,12 +2,11 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrl: './app.component.css'
+  selector: 'app-property-form',
+  templateUrl: './property-form.component.html',
+  styleUrls: ['./property-form.component.css']
 })
-export class AppComponent implements OnInit {
-  title = 'dyuti';
+export class PropertyFormComponent implements OnInit {
   propertyForm: FormGroup;
   countries = [
     {
@@ -31,6 +30,7 @@ export class AppComponent implements OnInit {
     // add more countries as needed
   ];
   selectedCountryServices: any = {};
+  totalCost: number = 0;
 
   constructor(private fb: FormBuilder) {
     this.propertyForm = this.fb.group({
@@ -60,11 +60,36 @@ export class AppComponent implements OnInit {
   ngOnInit(): void {
     this.propertyForm.get('country')?.valueChanges.subscribe(value => {
       this.selectedCountryServices = this.countries.find(c => c.name === value)?.services || {};
+      this.resetServices();
     });
+
+    this.propertyForm.get('services')?.valueChanges.subscribe(() => {
+      this.calculateTotalCost();
+    });
+  }
+
+  resetServices(): void {
+    this.propertyForm.get('services')?.reset({
+      currentOwner: false,
+      twoOwnerSearch: false,
+      fullSearch: false,
+      documentRetrieval: false
+    });
+    this.totalCost = 0;
+  }
+
+  calculateTotalCost(): void {
+    const services = this.propertyForm.get('services')?.value;
+    this.totalCost = 0;
+
+    for (const service in services) {
+      if (services[service]) {
+        this.totalCost += this.selectedCountryServices[service];
+      }
+    }
   }
 
   onSubmit(): void {
     console.log(this.propertyForm.value);
   }
-
 }
