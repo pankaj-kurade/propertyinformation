@@ -66,7 +66,7 @@
   <div class="form-section"  style="width: 30%;">
     <label>
       Country:
-      <select formControlName="country">
+      <select formControlName="country" >
         <option *ngFor="let country of countries" [value]="country.name">
           {{ country.name }}
         </option>
@@ -75,7 +75,7 @@
   </div>
   <hr>
 
-  <div formGroupName="services" class="form-section">
+  <div formGroupName="services" class="form-section" [hidden]="hiddenvalue">
     <h2>Services</h2>
     <label>
       <input type="checkbox" formControlName="currentOwner">
@@ -93,12 +93,12 @@
       <input type="checkbox" formControlName="documentRetrieval">
       Document Retrieval: &nbsp;&nbsp;&nbsp;&nbsp;${{ selectedCountryServices.documentRetrieval }}
     </label>
+    <div class="form-section">
+      <h2>Total Cost: &nbsp;&nbsp;&nbsp;&nbsp; ${{ totalCost }}</h2>
+
+
+    <button class="btn btn-primary" type="submit">continue >></button>
+    </div>
   </div>
 
-  <div class="form-section">
-    <h2>Total Cost: &nbsp;&nbsp;&nbsp;&nbsp; ${{ totalCost }}</h2>
-
-
-  <button class="btn btn-primary" type="submit">continue >></button>
-  </div>
 </form>

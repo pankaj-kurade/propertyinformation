@@ -9,10 +9,11 @@ interface SelectedService {
 @Component({
   selector: 'app-property-form',
   templateUrl: './property-form.component.html',
-  styleUrls: ['./property-form.component.css']
+  styleUrls: ['./property-form.component.css'],
 })
 export class PropertyFormComponent implements OnInit {
   propertyForm: FormGroup;
+  hiddenvalue=true;
   countries = [
     {
       name: 'USA',
@@ -20,8 +21,8 @@ export class PropertyFormComponent implements OnInit {
         currentOwner: 85,
         twoOwnerSearch: 110,
         fullSearch: 150,
-        documentRetrieval: 40
-      }
+        documentRetrieval: 40,
+      },
     },
     {
       name: 'Canada',
@@ -29,43 +30,48 @@ export class PropertyFormComponent implements OnInit {
         currentOwner: 80,
         twoOwnerSearch: 100,
         fullSearch: 140,
-        documentRetrieval: 35
-      }
-    }
+        documentRetrieval: 35,
+      },
+    },
     // Add more countries as needed
   ];
   selectedCountryServices: any = {};
   totalCost: number = 0;
   selectedServices: SelectedService[] = [];
 
-  constructor(private fb: FormBuilder, private dataService: DataService, private router: Router) {
+  constructor(
+    private fb: FormBuilder,
+    private dataService: DataService,
+    private router: Router
+  ) {
     this.propertyForm = this.fb.group({
       propertyAddress: this.fb.group({
         address: [''],
         street: [''],
         city: [''],
         state: [''],
-        zipCode: ['']
+        zipCode: [''],
       }),
       additionalInformation: this.fb.group({
         city: [''],
         parcel: [''],
         ownerName: [''],
-        additionalInfo: ['']
+        additionalInfo: [''],
       }),
       country: [''],
       services: this.fb.group({
         currentOwner: [false],
         twoOwnerSearch: [false],
         fullSearch: [false],
-        documentRetrieval: [false]
-      })
+        documentRetrieval: [false],
+      }),
     });
   }
 
   ngOnInit(): void {
-    this.propertyForm.get('country')?.valueChanges.subscribe(value => {
-      this.selectedCountryServices = this.countries.find(c => c.name === value)?.services || {};
+    this.propertyForm.get('country')?.valueChanges.subscribe((value) => {
+      this.selectedCountryServices =
+        this.countries.find((c) => c.name === value)?.services || {};
       this.resetServices();
     });
 
@@ -80,7 +86,7 @@ export class PropertyFormComponent implements OnInit {
       currentOwner: false,
       twoOwnerSearch: false,
       fullSearch: false,
-      documentRetrieval: false
+      documentRetrieval: false,
     });
     this.totalCost = 0;
     this.selectedServices = [];
@@ -103,20 +109,25 @@ export class PropertyFormComponent implements OnInit {
 
     for (const service in services) {
       if (services[service]) {
-        this.selectedServices.push({ service, cost: this.selectedCountryServices[service] });
+        this.selectedServices.push({
+          service,
+          cost: this.selectedCountryServices[service],
+        });
       }
     }
 
     // Log the selected services to the console
     console.log('Selected Services:', this.selectedServices);
+    this.hiddenvalue=false
   }
 
   onSubmit(): void {
     console.log(this.propertyForm.value);
-    this.dataService.setData(this.propertyForm.value,this.totalCost,this.selectedServices);
+    this.dataService.setData(
+      this.propertyForm.value,
+      this.totalCost,
+      this.selectedServices
+    );
     this.router.navigate(['./property-info']);
-
-
   }
-
 }
