@@ -27,8 +27,8 @@
   display: flex;
 }
 
-.nav2 li {
-  float: left;
+.nav2  {
+
 }
 
 .nav2 li a {
@@ -86,7 +86,8 @@ input[type="tel"] {
   border-radius: 3px;
 }
 
-button {
+button1 {
+  color: #5b5a5a;
   display: block;
   width: 100%;
   padding: 10px;
@@ -103,4 +104,23 @@ button:hover {
 
 .error {
   color: red;
+}
+
+.btns {
+  display: flex;
+  justify-content: space-between;
+  display: block;
+  width: 10%;
+  padding: 10px;
+  background: linear-gradient(130deg, #848f7230, #4d8085);
+  color: #fff;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.back_generate{
+  margin-top: 20px;
+  display: flex;
+  justify-content: space-between;
 }

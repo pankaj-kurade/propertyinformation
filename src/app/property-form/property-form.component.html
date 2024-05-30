@@ -5,9 +5,14 @@
 <div class="" style="text-align: center">
   <nav class="nav2">
     <ul>
-      <li><a href="#" class="active">Property Details</a></li>
-      <li class="hide-800"><a href="#">Property Info</a></li>
-      <li class="hide-600"><a href="#">Checkout</a></li>
+      <!-- this.router.navigate(['./property-info']); -->
+
+      <li><a routerLink="(['./property-info'])" class="active">Property Details</a></li>
+      <li><a href="#" style="background-color: transparent;">Property Information</a></li>
+
+      <li><a href="#" class="active"  style="background-color: transparent;" >CheckOut</a></li>
+
+
     </ul>
   </nav>
 </div>
@@ -68,6 +73,7 @@
       </select>
     </label>
   </div>
+  <hr>
 
   <div formGroupName="services" class="form-section">
     <h2>Services</h2>

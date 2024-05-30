@@ -5,8 +5,8 @@
 <div class="" style="text-align: center">
   <nav class="nav2">
     <ul>
-      <li><a href="#">Property Details</a></li>
-      <li class="active"><a href="#">Property Info1</a></li>
+      <li><a href="property-form">Property Details</a></li>
+      <li class="active"><a href="">Property Info</a></li>
       <li class="hide-600"><a href="#">Checkout</a></li>
     </ul>
   </nav>
@@ -16,20 +16,21 @@
   <div class="container">
     <div class="header">
 
-      <h2>property informationn</h2>
-      <h2>information</h2>
+      <h2>Property Information</h2>
+      <h2>Information</h2>
     </div>
     <div class="propertyinfo">
       <hr>
-<h4>country: </h4>
-       <h4>       parcel:
+<h4>country: {{receivedData[0].country}}</h4>
+       <h4>parcel:{{receivedData[0].additionalInformation.parcel}}
       </h4>
-      <h4>ownwer Name</h4>
-      <h4>Addition info</h4>
+      <h4>ownwer Name: {{receivedData[0].additionalInformation.ownerName}}</h4>
+      <h4>Addition info:{{receivedData[0].additionalInformation.additionalInfo}}</h4>
     </div>
     <div class="orderinfo">
 <hr>
-      <h4>two owner search</h4>
+      <h4>Two Owner Search</h4> <br>
+      Total  :{{receivedData[1]}}
 
     </div>
 
@@ -54,8 +55,13 @@ Contact Infoormation
     <label for="email">Email:</label>
     <input type="email" id="email" name="email" ngModel required>
   </div>
-  <button type="submit" [disabled]="!form.valid">Submit</button>
+  <button class="button1" type="submit" [disabled]="!form.valid">Submit</button>
 </form>
+<div class="back_generate">
+  <button mat-button color="primary">Back</button>
+  <button type="button" (click)="generatePDF()">Generate PDF</button>
+</div>
+
 
 
 </div>

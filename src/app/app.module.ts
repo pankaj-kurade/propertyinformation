@@ -15,7 +15,7 @@ import { provideAnimationsAsync } from '@angular/platform-browser/animations/asy
 import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
-
+import { HttpClientModule } from '@angular/common/http';
 import { FormsModule } from '@angular/forms';
 import { PropertyInfoComponent } from './property-info/property-info.component';
 @NgModule({
@@ -27,7 +27,7 @@ import { PropertyInfoComponent } from './property-info/property-info.component';
     PropertyInfoComponent
   ],
   imports: [
-    BrowserModule,MatIconModule,FormsModule,
+    BrowserModule,MatIconModule,FormsModule,HttpClientModule,
     AppRoutingModule,ReactiveFormsModule,MatInputModule,MatSelectModule,MatCheckboxModule,MatFormFieldModule,MatOptionModule
 
 

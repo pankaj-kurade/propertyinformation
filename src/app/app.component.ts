@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -8,63 +9,16 @@ import { FormBuilder, FormGroup } from '@angular/forms';
 })
 export class AppComponent implements OnInit {
   title = 'dyuti';
-  propertyForm: FormGroup;
-  countries = [
-    {
-      name: 'USA',
-      services: {
-        currentOwner: 85,
-        twoOwnerSearch: 110,
-        fullSearch: 150,
-        documentRetrieval: 40
-      }
-    },
-    {
-      name: 'Canada',
-      services: {
-        currentOwner: 80,
-        twoOwnerSearch: 100,
-        fullSearch: 140,
-        documentRetrieval: 35
-      }
-    }
-    // add more countries as needed
-  ];
-  selectedCountryServices: any = {};
+  constructor(private router:Router) {
 
-  constructor(private fb: FormBuilder) {
-    this.propertyForm = this.fb.group({
-      propertyAddress: this.fb.group({
-        address: [''],
-        street: [''],
-        city: [''],
-        state: [''],
-        zipCode: ['']
-      }),
-      additionalInformation: this.fb.group({
-        city: [''],
-        parcel: [''],
-        ownerName: [''],
-        additionalInfo: ['']
-      }),
-      country: [''],
-      services: this.fb.group({
-        currentOwner: [false],
-        twoOwnerSearch: [false],
-        fullSearch: [false],
-        documentRetrieval: [false]
-      })
-    });
+  }
+  ngOnInit(){
+        this.router.navigate(['./property-form'])
+
+
+
   }
 
-  ngOnInit(): void {
-    this.propertyForm.get('country')?.valueChanges.subscribe(value => {
-      this.selectedCountryServices = this.countries.find(c => c.name === value)?.services || {};
-    });
-  }
 
-  onSubmit(): void {
-    console.log(this.propertyForm.value);
-  }
 
 }

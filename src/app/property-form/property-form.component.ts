@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
+import { DataService } from '../data.service';
+import { HttpClient } from '@angular/common/http';
+import { Route, Router } from '@angular/router';
 
 @Component({
   selector: 'app-property-form',
@@ -32,7 +35,7 @@ export class PropertyFormComponent implements OnInit {
   selectedCountryServices: any = {};
   totalCost: number = 0;
 
-  constructor(private fb: FormBuilder) {
+  constructor(private fb: FormBuilder,private dataService: DataService,private router:Router) {
     this.propertyForm = this.fb.group({
       propertyAddress: this.fb.group({
         address: [''],
@@ -52,7 +55,9 @@ export class PropertyFormComponent implements OnInit {
         currentOwner: [false],
         twoOwnerSearch: [false],
         fullSearch: [false],
-        documentRetrieval: [false]
+        documentRetrieval: [false],
+        totalCost:[]
+
       })
     });
   }
@@ -91,5 +96,10 @@ export class PropertyFormComponent implements OnInit {
 
   onSubmit(): void {
     console.log(this.propertyForm.value);
+    this.dataService.setData(this.propertyForm.value,this.totalCost);
+    this.router.navigate(['./property-info']);
+
+
+
   }
 }
