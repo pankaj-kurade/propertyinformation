@@ -125,3 +125,8 @@ button:hover {
   display: flex;
   justify-content: space-between;
 }
+
+.pro-orderInfo{
+display: flex;
+justify-content: space-between;
+}
