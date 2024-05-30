@@ -130,3 +130,35 @@ button:hover {
 display: flex;
 justify-content: space-between;
 }
+
+
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  font-family: Arial, sans-serif;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+thead {
+  background-color: #f2f2f2;
+}
+.tablehead {
+  background-color: #e4e6e7;
+  color: #333;
+  text-align: left;
+  font-weight: bold;
+}
+.tablehead td {
+  padding: 10px;
+  border-bottom: 2px solid #ddd;
+}
+tbody tr {
+  transition: background-color 0.3s ease;
+}
+tbody tr:hover {
+  background-color: #f1f1f1;
+}
+tbody td {
+  padding: 10px;
+  border-bottom: 1px solid #ddd;
+}
