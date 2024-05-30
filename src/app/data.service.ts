@@ -12,7 +12,7 @@ export class DataService {
 
   constructor() { }
 
-  setData(data: any,total:any) {
-    this.dataSubject.next([data,total]);
+  setData(data: any,total:any,country:any) {
+    this.dataSubject.next([data,total,country]);
   }
 }

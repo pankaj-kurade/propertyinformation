@@ -1,3 +1,4 @@
+import { Router } from '@angular/router';
 import { Component, OnInit } from '@angular/core';
 import { DataService } from '../data.service';
 import jsPDF from 'jspdf';
@@ -21,8 +22,8 @@ export class PropertyInfoComponent implements OnInit {
     doc.save('property-details.pdf');
   }
   receivedData: any;
-
-  constructor(private dataService: DataService) { }
+serviceobj=[];
+  constructor(private dataService: DataService,private router:Router) { }
 
   ngOnInit() {
     this.dataService.data$.subscribe(data => {
@@ -30,11 +31,26 @@ export class PropertyInfoComponent implements OnInit {
     });
     console.log(this.receivedData,'recivedtta');
 
+for (let i = 0; i < this.receivedData[2].length; i++) {
+if(this.receivedData[0].services.value){
+  console.log(this.receivedData[0].services.value)
+
+}
+}
+
+
+
+
   }
 
   submitForm() {
     console.log("Form submitted!");
   }
 
+  backTohomePge(){
+  this.router.navigate(['./property-form']);
+  // this.router.navigate(['./property-info']);
+
+  }
 
 }

@@ -40,13 +40,14 @@
 }
 
 .main-container {
-  background-color: #ffffff;
+  background: linear-gradient(100deg, #ffffff30, hwb(187 81% 12%));
   padding: 20px;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 .container {
+  display: inline;
   max-width: 800px;
   margin: 0 auto;
 }

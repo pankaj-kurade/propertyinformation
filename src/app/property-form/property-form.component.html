@@ -8,7 +8,7 @@
       <!-- this.router.navigate(['./property-info']); -->
 
       <li><a routerLink="(['./property-info'])" class="active">Property Details</a></li>
-      <li><a href="#" style="background-color: transparent;">Property Information</a></li>
+      <li><a routerLink="(['./property-form'])"style="background-color: transparent;">Property Information</a></li>
 
       <li><a href="#" class="active"  style="background-color: transparent;" >CheckOut</a></li>
 
@@ -22,23 +22,23 @@
       <h2>Property Address</h2>
       <label>
         Address:
-        <input formControlName="address">
+        <input formControlName="address" required>
       </label>
       <label>
         Street:
-        <input formControlName="street">
+        <input formControlName="street" required>
       </label>
       <label>
         City:
-        <input formControlName="city">
+        <input formControlName="city" required>
       </label>
       <label>
         State:
-        <input formControlName="state">
+        <input formControlName="state" required>
       </label>
       <label>
         Zip Code:
-        <input formControlName="zipCode">
+        <input formControlName="zipCode" required>
       </label>
     </div>
 
@@ -46,15 +46,15 @@
       <h2>Additional Information</h2>
       <label>
         City:
-        <input formControlName="city">
+        <input formControlName="city" required>
       </label>
       <label>
         Parcel:
-        <input formControlName="parcel">
+        <input formControlName="parcel" required>
       </label>
       <label>
         Owner Name:
-        <input formControlName="ownerName">
+        <input formControlName="ownerName" required>
       </label>
       <label>
         Additional Info:
@@ -79,24 +79,24 @@
     <h2>Services</h2>
     <label>
       <input type="checkbox" formControlName="currentOwner">
-      Current Owner: ${{ selectedCountryServices.currentOwner }}
+      Current Owner: &nbsp;&nbsp;&nbsp;&nbsp;${{ selectedCountryServices.currentOwner }}
     </label>
     <label>
       <input type="checkbox" formControlName="twoOwnerSearch">
-      Two Owner Search: ${{ selectedCountryServices.twoOwnerSearch }}
+      Two Owner Search:&nbsp;&nbsp;&nbsp;&nbsp; ${{ selectedCountryServices.twoOwnerSearch }}
     </label>
     <label>
       <input type="checkbox" formControlName="fullSearch">
-      Full Search: ${{ selectedCountryServices.fullSearch }}
+      Full Search: &nbsp;&nbsp;&nbsp;&nbsp;${{ selectedCountryServices.fullSearch }}
     </label>
     <label>
       <input type="checkbox" formControlName="documentRetrieval">
-      Document Retrieval: ${{ selectedCountryServices.documentRetrieval }}
+      Document Retrieval: &nbsp;&nbsp;&nbsp;&nbsp;${{ selectedCountryServices.documentRetrieval }}
     </label>
   </div>
 
   <div class="form-section">
-    <h2>Total Cost: ${{ totalCost }}</h2>
+    <h2>Total Cost: &nbsp;&nbsp;&nbsp;&nbsp; ${{ totalCost }}</h2>
 
 
   <button class="btn btn-primary" type="submit">continue >></button>
