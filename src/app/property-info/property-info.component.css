@@ -17,20 +17,22 @@
   line-height: 50px ;
 } */
 
-.headerbar {
+.headerbar { line-height:initial;
   display: flex;
   justify-content: center;
   align-items: center;
   height: 50px;
+  line-height: normal;
   background: linear-gradient(130deg, #848f7230, hwb(186 50% 16%));
   width: 100%;
   border-radius: 20px;
 }
 
 .headerbar h1 {
+  margin-top: 5%;
+  line-height: initial;
   margin: 0;
   font-size: 40px;
-  line-height: 50px;
 }
 
 
@@ -44,9 +46,7 @@
   display: flex;
 }
 
-.nav2  {
 
-}
 
 .nav2 li a {
   display: block;
@@ -138,6 +138,7 @@ button:hover {
 }
 
 .back_generate{
+
   margin-top: 20px;
   display: flex;
   justify-content: space-between;

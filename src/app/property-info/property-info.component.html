@@ -22,7 +22,7 @@
     <div class="pro-orderInfo">
     <div class="propertyinfo">
       <hr>
-      <h4>country: {{receivedData[0].country}}</h4>
+      <h4>country: {{receivedData[0].propertyAddress.country}}</h4>
       <h4>parcel:{{receivedData[0].additionalInformation.parcel}}
       </h4>
       <h4>ownwer Name: {{receivedData[0].additionalInformation.ownerName}}</h4>
@@ -33,7 +33,7 @@
       <div>
 
         <!-- ........... -->
-        <table border="2px">
+        <table>
           <thead >
             <tr class="tablehead">
               <td> Service</td>
