@@ -18,7 +18,7 @@
       <h2>Property Address</h2>
       <label>
         Address:
-        <input formControlName="address" value="jbj">
+        <input formControlName="address" value="jbj" required>
       </label>
       <label>
         Street:
@@ -30,7 +30,7 @@
       </label>
       <label>
         Country:
-        <select formControlName="country">
+        <select formControlName="country" (change)="onCountryChange($event)">
           <option *ngFor="let country of countries" [value]="country.name">
             {{ country.name }}
           </option>
@@ -38,7 +38,7 @@
       </label>
       <label>
         State:
-        <select formControlName="state" [disabled]="!states.length" (change)="onCountryChange($event)">
+        <select formControlName="state" [disabled]="!states.length">
           <option *ngFor="let state of states" [value]="state">
             {{ state }}
           </option>
