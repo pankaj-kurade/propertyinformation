@@ -2,18 +2,21 @@ import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+
 interface SelectedService {
   service: string;
   cost: number;
 }
+
 @Component({
   selector: 'app-property-form',
   templateUrl: './property-form.component.html',
   styleUrls: ['./property-form.component.css'],
 })
 export class PropertyFormComponent implements OnInit {
+
   propertyForm: FormGroup;
-  hiddenvalue=true;
+  hiddenvalue = true;
   countries = [
     {
       name: 'USA',
@@ -23,6 +26,7 @@ export class PropertyFormComponent implements OnInit {
         fullSearch: 150,
         documentRetrieval: 40,
       },
+      states: ['Alabama', 'Alaska', 'Arizona', 'Arkansas', 'California', 'Colorado', 'Connecticut', 'Delaware', 'Florida', 'Georgia']
     },
     {
       name: 'Canada',
@@ -32,9 +36,41 @@ export class PropertyFormComponent implements OnInit {
         fullSearch: 140,
         documentRetrieval: 35,
       },
+      states: ['Alberta', 'British Columbia', 'Manitoba', 'New Brunswick', 'Newfoundland and Labrador', 'Nova Scotia', 'Ontario', 'Prince Edward Island', 'Quebec', 'Saskatchewan']
     },
-    // Add more countries as needed
+    {
+      name: 'India',
+      services: {
+        currentOwner: 90,
+        twoOwnerSearch: 120,
+        fullSearch: 160,
+        documentRetrieval: 45,
+      },
+      states: ['Andhra Pradesh', 'Arunachal Pradesh', 'Assam', 'Bihar', 'Chhattisgarh', 'Goa', 'Gujarat', 'Haryana', 'Himachal Pradesh', 'Jharkhand', 'Karnataka', 'Kerala', 'Madhya Pradesh', 'Maharashtra', 'Manipur', 'Meghalaya', 'Mizoram', 'Nagaland', 'Odisha', 'Punjab', 'Rajasthan', 'Sikkim', 'Tamil Nadu', 'Telangana', 'Tripura', 'Uttar Pradesh', 'Uttarakhand', 'West Bengal']
+    },
+    {
+      name: 'Australia',
+      services: {
+        currentOwner: 95,
+        twoOwnerSearch: 125,
+        fullSearch: 155,
+        documentRetrieval: 50,
+      },
+      states: ['New South Wales', 'Victoria', 'Queensland', 'Western Australia', 'South Australia', 'Tasmania', 'Australian Capital Territory', 'Northern Territory']
+    },
+    {
+      name: 'United Kingdom',
+      services: {
+        currentOwner: 75,
+        twoOwnerSearch: 95,
+        fullSearch: 130,
+        documentRetrieval: 30,
+      },
+      states: ['England', 'Scotland', 'Wales', 'Northern Ireland']
+    },
   ];
+
+  states: string[] = [];
   selectedCountryServices: any = {};
   totalCost: number = 0;
   selectedServices: SelectedService[] = [];
@@ -51,6 +87,7 @@ export class PropertyFormComponent implements OnInit {
         city: [''],
         state: [''],
         zipCode: [''],
+        country: ['']
       }),
       additionalInformation: this.fb.group({
         city: [''],
@@ -69,9 +106,10 @@ export class PropertyFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.propertyForm.get('country')?.valueChanges.subscribe((value) => {
-      this.selectedCountryServices =
-        this.countries.find((c) => c.name === value)?.services || {};
+    this.propertyForm.get('propertyAddress.country')?.valueChanges.subscribe((value) => {
+      const selectedCountry = this.countries.find((c) => c.name === value);
+      this.selectedCountryServices = selectedCountry?.services || {};
+      this.states = selectedCountry?.states || [];
       this.resetServices();
     });
 
@@ -79,6 +117,16 @@ export class PropertyFormComponent implements OnInit {
       this.calculateTotalCost();
       this.updateSelectedServices();
     });
+  }
+
+  onCountryChange(event: Event): void {
+        this.hiddenvalue = false;
+
+    const country = (event.target as HTMLSelectElement).value;
+    const selectedCountry = this.countries.find(c => c.name === country);
+    this.states = selectedCountry ? selectedCountry.states : [];
+    this.propertyForm.get('propertyAddress.state')?.reset('');
+
   }
 
   resetServices(): void {
@@ -118,7 +166,6 @@ export class PropertyFormComponent implements OnInit {
 
     // Log the selected services to the console
     console.log('Selected Services:', this.selectedServices);
-    this.hiddenvalue=false
   }
 
   onSubmit(): void {
