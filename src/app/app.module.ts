@@ -16,6 +16,8 @@ import { provideAnimations } from '@angular/platform-browser/animations';
 import { MatIconModule } from '@angular/material/icon';
 import {MatInputModule} from '@angular/material/input';
 import { HttpClientModule } from '@angular/common/http';
+import {MatSnackBarModule} from '@angular/material/snack-bar';
+
 import { FormsModule } from '@angular/forms';
 import { PropertyInfoComponent } from './property-info/property-info.component';
 @NgModule({
@@ -27,7 +29,7 @@ import { PropertyInfoComponent } from './property-info/property-info.component';
     PropertyInfoComponent
   ],
   imports: [
-    BrowserModule,MatIconModule,FormsModule,HttpClientModule,
+    BrowserModule,MatIconModule,FormsModule,HttpClientModule,MatSnackBarModule,
     AppRoutingModule,ReactiveFormsModule,MatInputModule,MatSelectModule,MatCheckboxModule,MatFormFieldModule,MatOptionModule
 
 

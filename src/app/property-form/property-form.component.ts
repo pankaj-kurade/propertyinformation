@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup,Validators } from '@angular/forms';
 import { DataService } from '../data.service';
 import { Router } from '@angular/router';
+import { MatSnackBar } from '@angular/material/snack-bar';
 
 interface SelectedService {
   service: string;
@@ -76,24 +77,24 @@ export class PropertyFormComponent implements OnInit {
   selectedServices: SelectedService[] = [];
 
   constructor(
-    private fb: FormBuilder,
+    private fb: FormBuilder, private snackBar: MatSnackBar,
     private dataService: DataService,
     private router: Router
   ) {
     this.propertyForm = this.fb.group({
       propertyAddress: this.fb.group({
-        address: [''],
-        street: [''],
-        city: [''],
-        state: [''],
-        zipCode: [''],
-        country: ['']
+        address: ['', Validators.required],
+        street: ['', Validators.required],
+        city: ['', Validators.required],
+        state: ['', Validators.required],
+        zipCode: ['', Validators.required],
+        country: ['', Validators.required]
       }),
       additionalInformation: this.fb.group({
-        city: [''],
-        parcel: [''],
-        ownerName: [''],
-        additionalInfo: [''],
+        city: ['', Validators.required],
+        parcel: ['', Validators.required],
+        ownerName: ['', Validators.required],
+        additionalInfo: ['', Validators.required],
       }),
       country: [''],
       services: this.fb.group({
@@ -174,6 +175,19 @@ export class PropertyFormComponent implements OnInit {
   theFormValue:any
 
   onSubmit(): void {
+    if (this.propertyForm.valid) {
+      console.log('Form submitted!');
+
+    }
+    else{
+      this.snackBar.open('Please fill in all fields correctly!', 'Close', { duration: 3000 });
+
+    }
+
+
+
+
+
     localStorage.setItem('formData', JSON.stringify(this.propertyForm.value));
 
     console.log(this.propertyForm.value);
