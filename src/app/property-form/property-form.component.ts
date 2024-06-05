@@ -167,9 +167,14 @@ export class PropertyFormComponent implements OnInit {
     // Log the selected services to the console
     console.log('Selected Services:', this.selectedServices);
   }
+  theFormValue:any
 
   onSubmit(): void {
     console.log(this.propertyForm.value);
+    this.theFormValue=this.propertyForm;
+    console.log(this.theFormValue.value,"this.formvalue");
+
+
     this.dataService.setData(
       this.propertyForm.value,
       this.totalCost,

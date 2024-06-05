@@ -18,10 +18,8 @@
       <h2>Property Address</h2>
       <label>
         Address:
-        <input formControlName="address" required>
+        <input formControlName="address" value="jbj" required>
       </label>
-
-
       <label>
         Street:
         <input formControlName="street" required>
@@ -32,7 +30,7 @@
       </label>
       <label>
         Country:
-        <select formControlName="country">
+        <select formControlName="country" (change)="onCountryChange($event)">
           <option *ngFor="let country of countries" [value]="country.name">
             {{ country.name }}
           </option>
@@ -40,7 +38,7 @@
       </label>
       <label>
         State:
-        <select formControlName="state" [disabled]="!states.length" (change)="onCountryChange($event)">
+        <select formControlName="state" [disabled]="!states.length">
           <option *ngFor="let state of states" [value]="state">
             {{ state }}
           </option>
@@ -78,39 +76,45 @@
 
   <div formGroupName="services" class="form-section" [hidden]="hiddenvalue">
     <h2>Services</h2>
-    <section class="example-section">
-      <mat-checkbox class="example-margin" formControlName="currentOwner">
-        <h4 class="currenytoverr">currentOwner:{{ selectedCountryServices.currentOwner }}
-        </h4>
+    <mat-checkbox class="example-margin" formControlName="currentOwner">
+      <h4 class="currenytoverr">currentOwner:{{ selectedCountryServices.currentOwner }}
+      </h4>
 
-      </mat-checkbox>
-      <br>
-      <mat-checkbox class="example-margin" formControlName="twoOwnerSearch">
-        <h4 class="currenytoverr"> twoOwnerSearch:{{ selectedCountryServices.twoOwnerSearch }}</h4>
-      </mat-checkbox>
-      <br>
+    </mat-checkbox>
+    <br>
+    <mat-checkbox class="example-margin" formControlName="twoOwnerSearch">
+      <h4 class="currenytoverr"> twoOwnerSearch:{{ selectedCountryServices.twoOwnerSearch }}</h4>
+    </mat-checkbox>
+    <br>
+    <mat-checkbox class="example-margin" formControlName="fullSearch">
+      <h4 class="currenytoverr"> Full Search::{{ selectedCountryServices.fullSearch }}</h4>
+    </mat-checkbox>
+    <br>
+    <mat-checkbox class="example-margin" formControlName="documentRetrieval">
+      <h4 class="currenytoverr">
 
-      <mat-checkbox class="example-margin" formControlName="fullSearch">
-        <h4 class="currenytoverr"> Full Search::{{ selectedCountryServices.fullSearch }}</h4>
-      </mat-checkbox>
-      <br>
-      <mat-checkbox class="example-margin" formControlName="documentRetrieval">
-        <h4 class="currenytoverr">
-
-          documentRetrieval:{{ selectedCountryServices.documentRetrieval }}
-        </h4>
-      </mat-checkbox>
+        documentRetrieval:{{ selectedCountryServices.documentRetrieval }}
+      </h4>
+    </mat-checkbox>
 
 
-
-
-    </section>
 
 
     <div class="form-section">
-      <h2>Total Cost: &nbsp;&nbsp;&nbsp;&nbsp; {{ totalCost }}</h2>
+      <h2>Total Cost: &nbsp;&nbsp;&nbsp;&nbsp; ${{ totalCost }}</h2>
       <button class="btn btn-primary" type="submit">Continue >></button>
     </div>
   </div>
-
 </form>
+
+<!-- <style>
+  .centered {
+    text-align: center;
+  }
+  .inactive {
+    background-color: transparent;
+  }
+  .select-country {
+    width: 30%;
+  }
+</style> -->
