@@ -27,8 +27,11 @@ export class PropertyInfoComponent implements OnInit {
     data += '\nSelected Services:\n';
 
     this.receivedData[2].forEach((item: { service: any; cost: any; }, index: number) => {
-        data += `${index + 1}. Service: ${item.service}, Cost: ${item.cost}\n`;
+        data += `${index + 1} ${item.service}  Cost= ${item.cost}\n`;
+
     });
+
+
 
     const doc = new jsPDF();
     doc.text(data, 10, 10);

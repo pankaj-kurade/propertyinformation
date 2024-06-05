@@ -176,8 +176,19 @@ export class PropertyFormComponent implements OnInit {
 
   onSubmit(): void {
     if (this.propertyForm.valid) {
-      console.log('Form submitted!');
+      localStorage.setItem('formData', JSON.stringify(this.propertyForm.value));
 
+      console.log(this.propertyForm.value);
+      this.theFormValue=this.propertyForm;
+      console.log(this.theFormValue.value,"this.formvalue");
+
+
+      this.dataService.setData(
+        this.propertyForm.value,
+        this.totalCost,
+        this.selectedServices
+      );
+      this.router.navigate(['./property-info']);
     }
     else{
       this.snackBar.open('Please fill in all fields correctly!', 'Close', { duration: 3000 });
@@ -188,18 +199,6 @@ export class PropertyFormComponent implements OnInit {
 
 
 
-    localStorage.setItem('formData', JSON.stringify(this.propertyForm.value));
 
-    console.log(this.propertyForm.value);
-    this.theFormValue=this.propertyForm;
-    console.log(this.theFormValue.value,"this.formvalue");
-
-
-    this.dataService.setData(
-      this.propertyForm.value,
-      this.totalCost,
-      this.selectedServices
-    );
-    this.router.navigate(['./property-info']);
   }
 }
