@@ -106,6 +106,10 @@ export class PropertyFormComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const savedForm = localStorage.getItem('formData');
+    if (savedForm) {
+      this.propertyForm.setValue(JSON.parse(savedForm));
+    }
     this.propertyForm.get('propertyAddress.country')?.valueChanges.subscribe((value) => {
       const selectedCountry = this.countries.find((c) => c.name === value);
       this.selectedCountryServices = selectedCountry?.services || {};
@@ -170,6 +174,8 @@ export class PropertyFormComponent implements OnInit {
   theFormValue:any
 
   onSubmit(): void {
+    localStorage.setItem('formData', JSON.stringify(this.propertyForm.value));
+
     console.log(this.propertyForm.value);
     this.theFormValue=this.propertyForm;
     console.log(this.theFormValue.value,"this.formvalue");
