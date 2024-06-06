@@ -5,8 +5,8 @@
 <div class="centered">
   <nav class="nav2">
     <ul>
-      <li><a [routerLink]="['/property-info']" class="active">Property Detail</a></li>
-      <li><a [routerLink]="['/property-form']" class="inactive">Property Info</a></li>
+      <li><a [routerLink]="['/property-info']" class="active">Property Details</a></li>
+      <li><a [routerLink]="['/property-form']" class="inactive">Property Information</a></li>
       <li><a href="#" class="inactive">CheckOut</a></li>
     </ul>
   </nav>
@@ -30,15 +30,23 @@
       </label>
       <label>
         Country:
-        <select formControlName="country" (change)="onCountryChange($event)">
+        <select formControlName="country">
           <option *ngFor="let country of countries" [value]="country.name">
             {{ country.name }}
           </option>
         </select>
+
       </label>
+
+
+
+
+
+
+
       <label>
         State:
-        <select formControlName="state" [disabled]="!states.length">
+        <select formControlName="state" [disabled]="!states.length" (change)="onCountryChange($event)">
           <option *ngFor="let state of states" [value]="state">
             {{ state }}
           </option>
